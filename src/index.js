@@ -1,35 +1,48 @@
-import "./index.css";
+/* eslint-disable no-param-reassign */
+const ddShort = document.getElementById("short");
+const ddButtons = document.getElementById("ddButtons");
+ddShort.parentNode.removeChild(ddButtons);
 
-const ddMenu = document.createElement("div");
-ddMenu.id = "ddMenu";
-document.body.append(ddMenu);
+function removeMenu(shortDiv, menu, closeButton) {
+  if (shortDiv.contains(closeButton)) {
+    shortDiv.removeChild(closeButton);
+    menu.classList.add("closed");
+    if (menu.classList.contains("closed"))
+      setTimeout(() => {
+        menu.classList.remove("closed");
+      }, 1);
+  }
+}
 
-const ddMenuP = document.createElement("p");
-ddMenuP.innerHTML = "Drop Down Menu";
-ddMenu.appendChild(ddMenuP);
+function showDDMenu(shortDiv, buttons) {
+  const menu = shortDiv.parentNode;
+  if (menu.classList.contains("closed")) menu.classList.remove("closed");
+  const closeButton = document.createElement("button");
+  closeButton.classList.add("short");
+  closeButton.classList.add("closeButton");
+  closeButton.innerHTML =
+    "<img src='../img/close.svg' alt='close' height=40px width=40px/>";
 
-const ddContents = document.createElement("div");
-ddContents.id = "ddContents";
-const ddButton1 = document.createElement("button");
-const ddButton2 = document.createElement("button");
-const ddButton3 = document.createElement("button");
-ddButton1.innerHTML = "Action 1";
-ddButton2.innerHTML = "Action 2";
-ddButton3.innerHTML = "Action 3";
-ddContents.appendChild(ddButton1);
-ddContents.appendChild(ddButton2);
-ddContents.appendChild(ddButton3);
+  menu.addEventListener("mouseenter", () => {
+    console.log(buttons);
+    menu.classList.add("hovered");
+    menu.appendChild(buttons);
+    if (this.innerWidth <= 600) {
+      shortDiv.appendChild(closeButton);
+    }
+  });
 
-const dynamicDDMenu = document.getElementById("ddMenu");
+  menu.addEventListener("mouseleave", () => {
+    console.log(menu);
+    menu.classList.remove("hovered");
+    menu.removeChild(buttons);
+    removeMenu(shortDiv, menu, closeButton);
+  });
 
-dynamicDDMenu.addEventListener("mouseenter", () => {
-  console.log(dynamicDDMenu);
-  dynamicDDMenu.classList.add("hovered");
-  dynamicDDMenu.appendChild(ddContents);
-});
+  closeButton.addEventListener("click", () => {
+    buttons.remove();
+    removeMenu(shortDiv, menu, closeButton);
+  });
+}
 
-dynamicDDMenu.addEventListener("mouseleave", () => {
-  console.log(dynamicDDMenu);
-  dynamicDDMenu.classList.remove("hovered");
-  dynamicDDMenu.removeChild(document.getElementById("ddContents"));
-});
+showDDMenu(ddShort, ddButtons);

@@ -17,30 +17,98 @@
   background-color: #ffd597;
 }
 
-#ddContents {
+#ddButtons {
   position: absolute;
   top: 30px;
   width: 40%;
-  height: 91px;
+  height: 88px;
   display: flex;
   flex-direction: column;
 }
 
-#ddContents > button {
+#ddButtons > button {
   height: 30px;
   border: 1px solid #ffd597;
   border-radius: 0;
   background-color: blanchedalmond;
 }
 
-#ddConents > button:not(:first-child) {
-  margin-top: 1px;
+#ddButtons > button:not(:first-child) {
+  margin-top: -1px;
 }
 
-#ddContents > button:hover {
+#ddButtons > button:hover {
   background-color: #fdc46e;
 }
 
-#ddContents > button:active {
+#ddButtons > button:active {
   background-color: #ffb342;
+}
+
+#short {
+  display: none;
+}
+
+#ddMenu > p {
+  display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+  #ddMenu {
+    width: 40px;
+    height: 40px;
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+  }
+
+  #short {
+    width: inherit;
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #ddMenu > p {
+    display: none;
+  }
+
+  #ddMenu:hover {
+    width: 100%;
+  }
+
+  #ddButtons {
+    position: absolute;
+    top: 40px;
+    background-color: #fdc46e;
+    height: 100vh;
+    width: 100%;
+  }
+
+  #ddButtons > button {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: #ffd597;
+    border-color: #ffb342;
+  }
+
+  .closeButton {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    display: flex;
+    align-items: center;
+  }
+
+  .closed {
+    width: 40px !important;
+  }
 }

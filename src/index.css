@@ -1,4 +1,5 @@
 * {
+  padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
@@ -29,7 +30,6 @@ body {
   height: 88px;
   display: flex;
   flex-direction: column;
-  z-index: 1;
 }
 
 #ddButtons > button {
@@ -69,7 +69,12 @@ body {
   scroll-behavior: smooth;
 }
 
+#imagesDiv {
+  z-index: -1;
+}
+
 #imagesDiv > div > img {
+  vertical-align: middle;
   width: 100vw;
   height: 100vh;
 }
@@ -77,6 +82,7 @@ body {
 #sliderLeft {
   position: absolute;
   top: 50%;
+  left: 0;
 }
 
 #sliderRight {
@@ -101,15 +107,14 @@ body {
   display: flex;
   align-items: center;
   transition: 0.6s ease;
-  z-index: 1;
 }
 
 #sliderRight {
-  border-radius: 3px 0 0 3px;
+  border-radius: 5px 0 0 5px;
 }
 
 #sliderLeft {
-  border-radius: 0 3px 3px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 #sliderRight:hover,
@@ -228,6 +233,7 @@ body {
     background-color: #fdc46e;
     height: 100vh;
     width: 100%;
+    z-index: 200;
   }
 
   #ddButtons > button {
@@ -236,6 +242,7 @@ body {
     align-items: center;
     background-color: #ffd597;
     border-color: #ffb342;
+    padding-left: 5px;
   }
 
   .closeButton {

@@ -47,7 +47,7 @@ function showDDMenu(shortDiv, buttons) {
   closeButton.classList.add("short");
   closeButton.classList.add("closeButton");
   closeButton.innerHTML =
-    "<img src='../img/close.svg' alt='close' height=40px width=40px/>";
+    "<img src='./img/close.svg' alt='close' height=40px width=40px/>";
 
   menu.addEventListener("mouseenter", () => {
     console.log(buttons);
